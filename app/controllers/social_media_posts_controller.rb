@@ -7,19 +7,14 @@ class SocialMediaPostsController < ApplicationController
   end
 
   def create
-    @post= SocialMediaPost.create(post_params)
+    @post= SocialMediaPost.create(post_params.merge(user_id: @user.id, likes: 0, dislikes: 0))
     render json: @post
   end
- def update
- 
+
+  def update
   @post= SocialMediaPost.find(params[:id])
- 
   @post.update({likes: params[:social_media_post][:likes]})
   render json: @post
- end
-  def destroy
-    @post=SocialMediaPost.find(params[:id])
-    @post.destroy
   end
 
   private
@@ -28,6 +23,5 @@ class SocialMediaPostsController < ApplicationController
     params
       .require(:social_media_post)
       .permit(:message, :featured_image, :likes, :dislikes)
-      .merge(user_id: @user.id, likes: 0, dislikes: 0)
   end
 end

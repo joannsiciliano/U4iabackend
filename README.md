@@ -19,7 +19,7 @@ def login
       @token=JWT.encode({user_id: @user.id}, Rails.application.secrets.secret_key_base[0])
       render json: {user: @user, token: @token}
     else
-      render json: {error: "Invalid Credentials"}, staus: :unauthorized
+      render json: {error: "Invalid Credentials"}, status: :unauthorized
   end
 ```
 
@@ -31,4 +31,4 @@ U4(i)A is currently in it's infancy. In the future I would like to implement a c
 
 For any further questions, please email me at joannsiciliano@gmail.com, or find me on linkDIn at https://www.linkedin.com/in/joannsiciliano/ :)
 
-thanks for looking!
+thanks for looking! 💖

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :social_media_posts, only: [:index,:destroy,:create, :update]
+  resources :social_media_posts, only: [:index,:destroy,:create,:update]
   resources :users
   post "/login", to: "users#login"
   get '/profile', to: "users#profile"
